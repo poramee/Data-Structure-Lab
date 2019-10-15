@@ -9,10 +9,8 @@ def sum1ToN(n):
     return n + sum1ToN(n - 1)
 
 def printNTo1(n):
-    
     print(n)
-    if n > 1:
-        printNTo1(n - 1)
+    if n > 1: printNTo1(n - 1)
 
 def print1ToN(n):
     if n > 1: print1ToN(n - 1)

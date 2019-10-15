@@ -6,5 +6,4 @@ def towerOfHanoi(n,fr,to,ax):
         print("move",n,"from",fr,"to",to) # From A to C
         towerOfHanoi(n - 1,ax,to,fr) # From B to C
 
-towerOfHanoi(2,'A','C','B')
-# print(fibo(100))
+towerOfHanoi(3,'A','C','B')
