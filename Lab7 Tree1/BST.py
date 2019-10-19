@@ -124,18 +124,43 @@ class BST:
 
     def delete(self,data):
         return self._delete(self.root,data)
-    def _delete(self,currNode,data):
-        return None
+    
+    def _inOrderSuccessor(self,currNode):
+        if currNode.getLeft() == None:
+            return currNode
+        else:
+            return self._inOrderSuccessor(currNode.getLeft())
+
+    def _delete(self, currNode, data):
+        if currNode == None:
+            return None
+
+        if data < currNode.data:
+            currNode.left = self._delete(currNode.left,data)
+        elif data > currNode.data:
+            currNode.right = self._delete(currNode.right,data)
+        else:
+            if currNode.left == None:
+                return currNode.right
+            elif currNode.right == None:
+                return currNode.left
+            else:
+                temp = self._inOrderSuccessor(currNode.right)
+                currNode.data = temp.data
+                self._delete(temp,temp.data)
+
+        return currNode
 
 l = [int(e) for e in input("insert integers : ").split()]
 print(l)
 t = BST() 
 for ele in l:
     t.addI(ele)
+    
+for ele in l:
+    t.addI(ele)
 
 t.inOrder()
 t.printSideway()
-
-
-
-
+t.delete(2)
+t.inOrder()
