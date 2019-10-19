@@ -150,17 +150,3 @@ class BST:
                 self._delete(temp,temp.data)
 
         return currNode
-
-l = [int(e) for e in input("insert integers : ").split()]
-print(l)
-t = BST() 
-for ele in l:
-    t.addI(ele)
-    
-for ele in l:
-    t.addI(ele)
-
-t.inOrder()
-t.printSideway()
-t.delete(2)
-t.inOrder()
