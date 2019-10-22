@@ -144,8 +144,12 @@ class BST:
             currNode.right = self._delete(currNode.right,data)
         else:
             if currNode.left == None:
+                if currNode == self.root:
+                    self.root = currNode.right
                 return currNode.right
             elif currNode.right == None:
+                if currNode == self.root:
+                    self.root = currNode.left
                 return currNode.left
             else:
                 temp = self._inOrderSuccessor(currNode.right)
