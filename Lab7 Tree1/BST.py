@@ -1,3 +1,4 @@
+import random
 # 1
 class Node:
     def __init__(self,data,left = None,right = None):
@@ -49,6 +50,7 @@ class BST:
                 else:
                     currNode = currNode.getLeft()
         return newNode
+
     def add(self,data):
         if self.root == None:
             self.root = Node(data)
@@ -95,13 +97,13 @@ class BST:
             self._preOrder(currNode.getLeft())
             self._preOrder(currNode.getRight())
 
-    def serach(self,searchData):
+    def search(self,searchData):
         return self._search(self.root,searchData)
     def _search(self,currNode,searchData):
         if currNode == None:
             return None
         else:
-            if searchData >= currNode.getData():
+            if searchData > currNode.getData():
                 return self._search(currNode.getRight(),searchData)
             elif searchData == currNode.getData():
                 return currNode
@@ -112,6 +114,7 @@ class BST:
         return self._path(self.root,searchData)
     def _path(self,currNode,searchData):
         if currNode == None:
+            print("None")
             return None
         else:
             print(currNode,end=" ")
@@ -147,6 +150,6 @@ class BST:
             else:
                 temp = self._inOrderSuccessor(currNode.right)
                 currNode.data = temp.data
-                self._delete(temp,temp.data)
+                currNode.right = self._delete(currNode.right,temp.data)
 
         return currNode
