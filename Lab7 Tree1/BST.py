@@ -153,3 +153,10 @@ class BST:
                 currNode.right = self._delete(currNode.right,temp.data)
 
         return currNode
+
+tree = BST()
+
+for i in range(0,5):
+    tree.addI(i)
+
+print(tree.search(3))
