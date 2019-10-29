@@ -34,12 +34,22 @@ def inOrder(r):
         print(r.data,end = ' ')
         inOrder(r.right)
 def addi(r,d):
+    currNode = r
     if r == None:
         return Node(d)
-    elif d >= r.getData():
-        r.right = addi(r.right,d)
-    else:
-        r.left = addi(r.left,d)
+    while currNode != None:
+        if d >= currNode.data:
+            if currNode.right != None:
+                currNode = currNode.right
+            else:
+                currNode.right = Node(d)
+                break
+        else:
+            if currNode.left != None:
+                currNode = currNode.left
+            else:
+                currNode.left = Node(d)
+                break
     return r
 def add(r,data):
     if not r:
@@ -61,11 +71,7 @@ def height(r):
     else:
         hl = height(r.left)
         hr = height(r.right)
-        return  max(hl,hr)+1
-        if hl > hr:
-            return hl+1
-        else:
-            return hr+1
+        return  max(hl,hr) + 1
 def path(r,d):
     if r.data != d:
         print(r.data,end = " ")
