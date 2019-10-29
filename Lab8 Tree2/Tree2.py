@@ -73,6 +73,9 @@ def height(r):
         hr = height(r.right)
         return  max(hl,hr) + 1
 def path(r,d):
+    if not r:
+        print("None")
+        return None
     if r.data != d:
         print(r.data,end = " ")
         if d < r.data:
@@ -103,6 +106,6 @@ for i in [3,4,1,6,2,5]:
     tree = addi(tree,i)
 printSideWay(tree,0)
 print("------")
-path(tree,5)
+path(tree,8)
 print("height:",height(tree))
 print(depth(tree, 2))
