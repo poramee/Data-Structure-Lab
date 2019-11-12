@@ -16,6 +16,8 @@ def print90(heap,index,level):
         print90(heap,index * 2,level + 1)
 def deleteMin(heap):
     mm = heap[1]
+    if len(heap) == 2:
+        return heap.pop()
     heap[1] = heap.pop()
     dataIt = 1
     while True:
@@ -53,4 +55,5 @@ print90(h,1,0)
 for i in range(0,len(dataToInsert)):
     deleteMin(h)
     print("-----------")
-    print90(h,1,0)
+    print(h)
+    # print90(h,1,0)
