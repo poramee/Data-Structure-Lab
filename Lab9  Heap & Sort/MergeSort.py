@@ -36,10 +36,10 @@ def mergeSort(list, fr, to):
 
 l = LinkedList()
 
-for i in range(0, 1000):
+for i in range(0, 10):
     l.append(random.randint(0, 100000))
-l = mergeSort(l,0,1000)
-
+print("Before Sort",l)
+l = mergeSort(l,0,9)
 print("Total Compare: ",comp)
 print(l)
 print(isSorted(l))

@@ -68,7 +68,7 @@ def quickSort2(list,pivot):
 
 l2 = LinkedList()
 
-for i in range(0,21):
+for i in range(0,10):
     l2.append(i)
 comp = 0
 l2 = quickSort2(l2,0)
