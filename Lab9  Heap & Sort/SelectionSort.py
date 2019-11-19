@@ -20,7 +20,7 @@ def selectionSort(list):
 
 l = LinkedList()
 
-for i in range(0, 3):
+for i in range(0, 10):
     l.append(random.randint(0, 100000))
 l = selectionSort(l)
 
