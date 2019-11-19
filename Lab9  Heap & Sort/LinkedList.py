@@ -54,6 +54,16 @@ class LinkedList:
             currNode = currNode.next
         currNode.next = Node(data)
         return currNode.next
+    def appendNode(self, node):
+        currNode = self.head
+        self.size += 1
+        if self.head == None:
+            self.head = node
+            return self.head
+        while currNode.next != None:
+            currNode = currNode.next
+        currNode.next = node
+        return currNode.next
 
     def pop(self):
         currNode = self.head
