@@ -1,11 +1,6 @@
 import random  # for testing
 from LinkedList import LinkedList
-
-def isSorted(list):
-    for i in range(0, len(list) - 1):
-        if list[i] < list[i - 1]:
-            return False
-    return True
+from isSorted import isSorted
 
 def selectionSort(list):
     length = len(list)
@@ -25,7 +20,7 @@ def selectionSort(list):
 
 l = LinkedList()
 
-for i in range(0, 100):
+for i in range(0, 3):
     l.append(random.randint(0, 100000))
 l = selectionSort(l)
 
