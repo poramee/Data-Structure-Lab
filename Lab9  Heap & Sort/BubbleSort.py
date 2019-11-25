@@ -16,7 +16,7 @@ def bubbleSort(list):
 l = LinkedList()
 
 for i in range(0,100):
-    l.append(random.randint(0,100000))
+    l.append(random.randint(0,100))
 l = bubbleSort(l)
 
 print(l)
