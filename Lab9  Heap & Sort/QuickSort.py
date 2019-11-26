@@ -39,13 +39,16 @@ def quickSort2(list,pivot):
             continue
         comp += 1
         if list[i].data <= list[pivot].data:
+            comp += 1
             left.append(list[i].data)
         else:
+            comp += 1
             right.append(list[i].data)
-    left = quickSort2(left, 0)
-    right = quickSort2(right, 0)
-    # left = quickSort2(left, len(left) // 2)
-    # right = quickSort2(right, len(right) // 2)
+
+    # left = quickSort2(left, 0)
+    # right = quickSort2(right, 0)
+    left = quickSort2(left, len(left) // 2)
+    right = quickSort2(right, len(right) // 2)
     # left = quickSort2(left,len(left) - 1)
     # right = quickSort2(right, len(right) - 1)
 
@@ -53,7 +56,34 @@ def quickSort2(list,pivot):
     newList.head = left.head
     newList.append(list[pivot].data)
     newList.appendNode(right.head)
+
     return newList
+
+
+def quickSortList(ll):
+    global comp
+    if len(ll) > 1:
+        # pivot = 0
+        pivot = len(ll) // 2
+        # pivot = len(ll) - 1
+
+        leftList = []
+        rightList = []
+
+        for i in range(0,len(ll)):
+            comp += 1
+            if i == pivot:
+                continue
+            if ll[i] <= ll[pivot]:
+                leftList.append(ll[i])
+            else:
+                rightList.append(ll[i])
+
+        leftList = quickSortList(leftList)
+        rightList = quickSortList(rightList)
+        leftList.append(ll[pivot])
+        return leftList + rightList
+    return ll
 
 
 # l = LinkedList()
@@ -66,14 +96,15 @@ def quickSort2(list,pivot):
 # print(l)
 # print(isSorted(l))
 
-l2 = LinkedList()
+l2 = []
 
-for i in range(0,10):
-    l2.append(i)
+for i in range(0,20):
+    rand = random.randint(0,50)
+    print(rand,end = " ")
+    l2.append(rand)
+print()
 comp = 0
-l2 = quickSort2(l2,0)
-# l2 = quickSort2(l2, len(l2) // 2)
-# l2 = quickSort2(l2,len(l2) - 1)
+l2 = quickSortList(l2)
 print("Total Compare: ", comp)
 print(l2)
 print(isSorted(l2))
