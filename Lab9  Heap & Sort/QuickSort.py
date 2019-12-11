@@ -60,12 +60,12 @@ def quickSort2(list,pivot):
     return newList
 
 
-def quickSortList(ll):
+def quickSortList(ll,pivotSelector):
     global comp
     if len(ll) > 1:
-        # pivot = 0
-        pivot = len(ll) // 2
-        # pivot = len(ll) - 1
+        if pivotSelector == 0: pivot = 0
+        elif pivotSelector == 1: pivot = len(ll) // 2
+        else: pivot = len(ll) - 1
 
         leftList = []
         rightList = []
@@ -79,11 +79,29 @@ def quickSortList(ll):
             else:
                 rightList.append(ll[i])
 
-        leftList = quickSortList(leftList)
-        rightList = quickSortList(rightList)
+        leftList = quickSortList(leftList,pivotSelector)
+        rightList = quickSortList(rightList,pivotSelector)
         leftList.append(ll[pivot])
         return leftList + rightList
     return ll
+
+def quickSort3List(ll,fr,to):
+    global comp
+    if to - fr <= 1:
+        return
+    pivot = fr
+    storeIndex = pivot + 1
+    for i in range(pivot + 1,to):
+        comp += 1
+        if ll[i] <= ll[pivot]:
+            ll[i],ll[storeIndex] = ll[storeIndex],ll[i]
+            storeIndex += 1
+    
+    ll[pivot],ll[storeIndex - 1] = ll[storeIndex - 1],ll[pivot]
+    pivot = storeIndex - 1
+    print(ll,pivot)
+    quickSort3List(ll,0,pivot)
+    quickSort3List(ll,pivot+1,to)
 
 
 # l = LinkedList()
@@ -98,14 +116,18 @@ def quickSortList(ll):
 
 l2 = []
 
-for i in range(0,20):
+for i in range(0,10):
     rand = random.randint(0,50)
     print(rand,end = " ")
     l2.append(rand)
 print()
 comp = 0
-l2 = quickSortList(l2)
-print("Total Compare: ", comp)
-print(l2)
-print(isSorted(l2))
+quickSort3List(l2,0,10)
+print("#1 - ", comp, "==>" ,l2)
+# comp = 0
+# ll = quickSortList(l2,1)
+# print("#2 - ", comp, "==>" ,ll)
+# comp = 0
+# ll = quickSortList(l2,2)
+# print("#3 - ", comp, "==>" ,ll)
 
